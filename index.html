@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Gei Vincy ❤️</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: #fff0f5;
+      text-align: center;
+      margin: 0;
+      padding: 10px;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+    
+    .header {
+      background: linear-gradient(45deg, #ff66b2, #ff3399);
+      color: white;
+      padding: 15px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 5px 15px rgba(255, 102, 178, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    h1 {
+      font-size: 2em;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 10px;
+    }
+    
+    /* Video Section - Now First */
+    .video-container {
+      margin: 20px auto;
+      max-width: 100%;
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(255, 51, 153, 0.4);
+    }
+    
+    video {
+      width: 100%;
+      border-radius: 20px;
+    }
+    
+    /* Love Test Section */
+    .love-test {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      margin: 30px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .heart {
+      font-size: 80px;
+      color: red;
+      animation: beat 1s infinite;
+      margin: 15px 0;
+    }
+    
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+    
+    .btn {
+      padding: 20px 40px;
+      font-size: 1.5em;
+      border: none;
+      border-radius: 50px;
+      margin: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 80%;
+      max-width: 300px;
+      display: inline-block;
+    }
+    
+    #yesBtn {
+      background: linear-gradient(45deg, #ff3399, #ff0066);
+      color: white;
+      box-shadow: 0 6px 0 #cc0066, 0 10px 20px rgba(255, 0, 102, 0.3);
+      font-weight: bold;
+    }
+    
+    #noBtn {
+      background: linear-gradient(45deg, #f5f5f5, #e0e0e0);
+      color: #666;
+      box-shadow: 0 6px 0 #ccc, 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    #noBtn:hover {
+      background: linear-gradient(45deg, #ffcccc, #ff9999);
+    }
+    
+    /* Slideshow Style */
+    .slideshow-container {
+      position: relative;
+      display: none;
+      margin: 30px auto;
+      max-width: 100%;
+    }
+    
+    .slide {
+      display: none;
+      width: 100%;
+      height: 60vh;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(255, 51, 153, 0.4);
+    }
+    
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Floating Hearts */
+    .floating-heart {
+      position: fixed;
+      font-size: 24px;
+      color: #ff3399;
+      animation: float linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    /* Final Message */
+    .final-message {
+      display: none;
+      font-size: 1.8em;
+      color: #cc0066;
+      margin: 40px 0;
+      animation: pulse 2s infinite;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(255, 102, 178, 0.3);
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    /* Navigation dots */
+    .dots {
+      text-align: center;
+      margin: 15px 0;
+    }
+    
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #ffb3d9;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+    
+    .active {
+      background-color: #ff66b2;
+    }
+    
+    /* Love Meter */
+    .love-meter {
+      display: none;
+      width: 80%;
+      max-width: 300px;
+      height: 30px;
+      background: #ffe6f2;
+      border-radius: 15px;
+      margin: 20px auto;
+      overflow: hidden;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .love-progress {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #ff66b2, #ff0066);
+      border-radius: 15px;
+      transition: width 1s;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 0.8em;
+    }
+    
+    /* Kiss Button */
+    #kissBtn {
+      display: none;
+      background: linear-gradient(45deg, #ff0066, #cc0066);
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.5em;
+      border: none;
+      border-radius: 50px;
+      margin: 20px auto;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #99004d, 0 10px 20px rgba(255, 0, 102, 0.3);
+      transition: all 0.3s;
+    }
+    
+    /* Date Counter */
+    .date-counter {
+      display: none;
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      margin: 30px auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      font-size: 1.2em;
+      color: #ff3399;
+    }
+    
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #f00;
+      opacity: 0;
+      animation: confetti 5s ease-in-out infinite;
+      z-index: 1000;
+    }
+    
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+    
+    /* Heart Cursor */
+    body.heart-cursor {
+      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><path fill='red' d='M16,28.261c0,0-14-7.926-14-17.046c0-4.418,3.582-8,8-8c2.418,0,4.676,1.082,6,2.784c1.324-1.702,3.582-2.784,6-2.784 c4.418,0,8,3.582,8,8C30,20.335,16,28.261,16,28.261z'/></svg>") 16 16, auto;
+    }
+    
+    /* Responsive adjustments */
+    @media (min-width: 768px) {
+      .btn {
+        width: auto;
+      }
+      
+      .video-container, .slideshow-container {
+        max-width: 80%;
+      }
+      
+      .slide {
+        height: 70vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>For the gei Vincy ❤️</h1>
+  </div>
+  
+  <div class="container">
+    <!-- Video Section - Now First -->
+    <div class="video-container" id="videoContainer">
+      <h2>Special dancing video 🎥</h2>
+      <video controls id="videoPlayer" poster="images/poster.jpg" autoplay playsinline loop>
+        <source src="images/video.mp4" type="video/mp4">
+        Your browser doesn't support videos
+        </video>
+    </div>
+    
+    <!-- Love Test Section -->
+    <div class="love-test">
+      <div class="heart">❤️</div>
+      <h2>Do you love me? 🥺</h2>
+      <button id="yesBtn" class="btn">YES! Of course! 😘</button>
+      <button id="noBtn" class="btn">No... 🙈</button>
+      
+      <div class="love-meter" id="loveMeter">
+        <div class="love-progress" id="loveProgress">0%</div>
+      </div>
+      
+      <button id="kissBtn">Send a Kiss 💋</button>
+    </div>
+    
+    <!-- Date Counter -->
+    <div class="date-counter" id="dateCounter">
+      You are like the hyperactive monkey jumping in my heart
+    </div>
+    
+    <!-- Slideshow Section -->
+    <div class="slideshow-container" id="slideshow">
+      <h2>Your pretty images ❤️</h2>
+      <div class="slide fade">
+        <img src="images/picture1.jpg">
+      </div>
+      <div class="slide fade">
+        <img src="images/picture2.jpg">
+      </div>
+      <div class="slide fade">
+        <img src="images/picture3.jpg">
+      </div>
+      <div class="slide fade">
+        <img src="images/picture4.jpg">
+      </div>
+      <div class="slide fade">
+        <img src="images/picture5.jpg">
+      </div>
+      <div class="slide fade">
+        <img src="images/picture6.jpg">
+      </div>
+      <div class="slide fade">
+        <img src="images/picture7.jpg">
+      </div>
+      <div class="slide fade">
+        <img src="images/picture8.jpg">
+      </div>
+      <div class="slide fade">
+        <img src="images/picture9.jpg">
+      </div>
+      <div class="slide fade">
+        <img src="images/picture10.jpg">
+      </div>
+      <div class="dots" id="dots"></div>
+    </div>
+    
+    <!-- Final Message -->
+    <div class="final-message" id="finalMessage">
+      I want to kiss you liao <br>
+      lamp lamp like that
+    </div>
+  </div>
+  
+  <!-- Background Music (hidden) -->
+  <audio id="bgMusic" loop>
+    <source src="images/background.mp3" type="audio/mpeg">
+  </audio>
+  
+  <script>
+    // Create floating hearts
+    function createHearts() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = ['❤️', '🧡', '💛', '💚', '💙', '💜', '🤎', '🖤', '🤍'][Math.floor(Math.random() * 9)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 5 + 3) + 's';
+        heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+        document.body.appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 8000);
+      }, 200);
+    }
+    
+    // Create confetti
+    function createConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = ['#ff0000', '#ff6699', '#ff9900', '#33cc33', '#3399ff', '#cc66ff'][Math.floor(Math.random() * 6)];
+        confetti.style.width = (Math.random() * 10 + 5) + 'px';
+        confetti.style.height = (Math.random() * 10 + 5) + 'px';
+        confetti.style.animationDelay = (Math.random() * 5) + 's';
+        document.body.appendChild(confetti);
+        
+        setTimeout(() => {
+          confetti.remove();
+        }, 5000);
+      }
+    }
+    
+    // Slideshow variables
+    let slideIndex = 0;
+    let slideInterval;
+    const slides = document.getElementsByClassName("slide");
+    const dotsContainer = document.getElementById("dots");
+    
+    // Create dots for navigation
+    function createDots() {
+      for (let i = 0; i < slides.length; i++) {
+        const dot = document.createElement("span");
+        dot.className = "dot";
+        dot.onclick = function() { currentSlide(i); };
+        dotsContainer.appendChild(dot);
+      }
+    }
+    
+    // Show slides
+    function showSlides() {
+      // Hide all slides
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      
+      // Update dots
+      const dots = document.getElementsByClassName("dot");
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      
+      // Show current slide
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        // When all slides are shown, show final message
+        clearInterval(slideInterval);
+        document.getElementById('slideshow').style.display = 'none';
+        showFinalMessage();
+        return;
+      }
+      
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+    }
+    
+    // Manual slide control
+    function currentSlide(n) {
+      clearInterval(slideInterval);
+      slideIndex = n;
+      showSlides();
+      slideInterval = setInterval(showSlides, 3000); // Change slide every 3 seconds
+    }
+    
+    // Show final message
+    function showFinalMessage() {
+      document.getElementById('finalMessage').style.display = 'block';
+      createConfetti();
+      document.body.classList.add('heart-cursor');
+    }
+    
+    // Calculate days together
+    function calculateDaysTogether() {
+      // Set your anniversary date here (YYYY, MM-1, DD)
+      const anniversary = new Date(2023, 0, 1); // Example: January 1, 2023
+      const today = new Date();
+      const diffTime = today - anniversary;
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById('daysTogether').textContent = diffDays;
+      document.getElementById('dateCounter').style.display = 'block';
+    }
+    
+    // Yes/No button logic
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const kissBtn = document.getElementById('kissBtn');
+    const loveMeter = document.getElementById('loveMeter');
+    const loveProgress = document.getElementById('loveProgress');
+    
+    let yesSize = 1;
+    let noClicks = 0;
+    let loveLevel = 0;
+    
+    noBtn.addEventListener('click', () => {
+      noClicks++;
+      yesSize += 0.2;
+      yesBtn.style.transform = `scale(${yesSize})`;
+      
+      // Increase love level but cap at 100%
+      loveLevel = Math.min(loveLevel + 10, 100);
+      loveProgress.style.width = loveLevel + '%';
+      loveProgress.textContent = loveLevel + '%';
+      loveMeter.style.display = 'block';
+      
+      if (loveLevel >= 100) {
+        noBtn.textContent = "I want to lamp you! ❤️";
+        noBtn.style.background = "linear-gradient(45deg, #ff3399, #ff0066)";
+        noBtn.style.color = "white";
+        kissBtn.style.display = 'block';
+      } else if (noClicks === 3) {
+        noBtn.textContent = "Stop lying! 😠";
+      } else if (noClicks === 5) {
+        noBtn.textContent = "Just click YES! 😤";
+      } else if (noClicks === 7) {
+        noBtn.textContent = "I know you love me! 😘";
+      }
+    });
+    
+    yesBtn.addEventListener('click', () => {
+      // Show slideshow
+      const slideshow = document.getElementById('slideshow');
+      slideshow.style.display = 'block';
+      createDots();
+      
+      // Start slideshow
+      showSlides();
+      slideInterval = setInterval(showSlides, 3000); // Change slide every 3 seconds
+      
+      // Create floating hearts
+      createHearts();
+      
+      // Show love meter at 100%
+      loveLevel = 100;
+      loveProgress.style.width = '100%';
+      loveProgress.textContent = '100%';
+      loveMeter.style.display = 'block';
+      
+      // Show kiss button
+      kissBtn.style.display = 'block';
+      
+      // Show date counter
+      calculateDaysTogether();
+      
+      // Change button text
+      yesBtn.textContent = "I knew it! ❤️";
+      noBtn.style.display = 'none';
+      
+      // Play background music
+      document.getElementById('bgMusic').play();
+    });
+    
+    kissBtn.addEventListener('click', () => {
+      createConfetti();
+      kissBtn.textContent = "💋 Muah Muah Muah! 💋";
+      setTimeout(() => {
+        kissBtn.textContent = "Send Another Kiss 💋";
+      }, 2000);
+    });
+        // Add this to your existing script
+    document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('videoPlayer');
+    const playPromise = video.play();
+    
+    // In case autoplay doesn't work
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+        // Show play button or handle the error
+        console.log('Autoplay prevented:', error);
+        });
+    }
+    });
+    
+  </script>
+</body>
+</html>
